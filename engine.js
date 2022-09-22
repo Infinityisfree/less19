@@ -38,6 +38,12 @@ window.addEventListener('load', function(){
             return;
         }
 
+        // if (e.target.dataset.button === "=") {
+        //     if (number ==='') number=buffer;
+        //     DisplayShow(number);
+        //     return;
+        // }
+
         if (operation !== '') {
             number = Calculate(buffer + operation + number);
             DisplayShow(number);
