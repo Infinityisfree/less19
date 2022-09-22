@@ -7,10 +7,14 @@ window.addEventListener('load', function(){
     let number = 0;
     let operation = '';
     let buffer = 0;
+    let flag ='';
 
     panelDigitButtons.addEventListener('click', function(e){
 
         if ( IsButton(e) === false ) return;
+        if(flag ==='operate'){
+            number = 0;
+        }
 
         if (e.target.dataset.button === "clear") {
             DisplayClear();
@@ -26,11 +30,15 @@ window.addEventListener('load', function(){
 
         number = Concatenation(number, e.target.dataset.button);
         DisplayShow(number);
+
+        flag ='digit';
     })
 
     operationButtons.addEventListener('click', function(e){
 
         if ( IsButton(e) === false ) return;
+
+        flag ='operate';
 
         if (e.target.dataset.button === "=") {
             number = operation !== '' ? Calculate(buffer + operation + number)  : number;
@@ -51,7 +59,7 @@ window.addEventListener('load', function(){
 
         operation = e.target.dataset.button;
         buffer = number;
-        number = 0;
+       
     })
 
     panelDigitButtons.addEventListener('mousedown', (e) => {
